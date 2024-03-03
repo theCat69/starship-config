@@ -4,6 +4,12 @@
 # Move the directory to the second line
 format = '''$time $all'''
 
+# Disable the blank line at the start of the prompt
+add_newline = false 
+
+[line_break]
+disabled = true
+
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
