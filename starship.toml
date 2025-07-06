@@ -13,6 +13,7 @@ disabled = true
 # Only works on linux. starship-quarkus is extracting the version from different files and echo it.
 [custom.quarkus]
 when = '''bash -c "( [ -f pom.xml ] && grep -q 'io.quarkus' pom.xml ) || ( [ -f build.gradle ] && grep -q 'io.quarkus' build.gradle ) || ( [ -f build.gradle.kts ] && grep -q 'io.quarkus' build.gradle.kts )"'''
+os = "linux"
 command = '''starship-quarkus'''
 symbol = "\ue237"
 style = "bold purple"
