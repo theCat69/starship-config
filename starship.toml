@@ -1,4 +1,4 @@
-# Get editor completions based on the config schema
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Move the directory to the second line
@@ -10,6 +10,32 @@ $character'''
 
 [line_break]
 disabled = true
+
+[custom.linux]
+when = "true"
+symbol = "🐧"
+os = "linux"
+format = ' $symbol'
+
+[custom.windows]
+when = "true"
+os = "windows"
+symbol = "\uf17a"
+style = "red"
+format = ' [$symbol]($style) '
+
+[custom.fish]
+when = """ test "$STARSHIP_SHELL" = "fish" """
+os = "linux"
+symbol = "🐟"
+format = '$symbol'
+
+[custom.cmd]
+when = """ test "$STARSHIP_SHELL" = "cmd" """
+os = "windows"
+symbol = "\uebc4"
+style = "white"
+format = ' [$symbol]($style) '
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
