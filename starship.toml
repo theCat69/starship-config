@@ -1,4 +1,3 @@
-
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Move the directory to the second line
@@ -10,6 +9,14 @@ $character'''
 
 [line_break]
 disabled = true
+
+# Only works on linux. starship-quarkus is extracting the version from different files and echo it.
+[custom.quarkus]
+when = '''bash -c "( [ -f pom.xml ] && grep -q 'io.quarkus' pom.xml ) || ( [ -f build.gradle ] && grep -q 'io.quarkus' build.gradle ) || ( [ -f build.gradle.kts ] && grep -q 'io.quarkus' build.gradle.kts )"'''
+command = '''starship-quarkus'''
+symbol = "\ue237"
+style = "bold purple"
+format = '\[[$symbol  $output]($style)\]'
 
 [custom.linux]
 when = "true"
@@ -104,7 +111,8 @@ format = '([\[$all_status$ahead_behind\]]($style))'
 format = '\[[$symbol($version)]($style)\]'
 
 [gradle]
-format = '\[[$symbol($version)]($style)\]'
+symbol = "\ue660"
+format = '\[[$symbol  ($version)]($style)\]'
 
 [guix_shell]
 format = '\[[$symbol]($style)\]'
